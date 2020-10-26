@@ -8,14 +8,23 @@
 ```
 create table address_book
     -> (
-    -> FirstName varchar(90) NOT NULL,
-    -> LastName varchar(90) NOT NULL,
+    -> FirstName varchar(100) NOT NULL,
+    -> LastName varchar(100) NOT NULL,
     -> Address varchar(250) NOT NULL,
-    -> City varchar(90) NOT NULL,
-    -> State varchar(90) NOT NULL,
-    -> ZIP int(5) NOT NULL,
-    -> Phone_Number int(14) NOT NULL,
+    -> City varchar(100) NOT NULL,
+    -> State varchar(100) NOT NULL,
+    -> ZIP mediumint(6) NOT NULL,
+    -> Phone_Number varchar(15) NOT NULL,
     -> Email varchar(150) NOT NULL,
     -> PRIMARY KEY (FirstName)
     -> );
 ```
+
+## UC3- Inserting contacts into address_book table
+```
+INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_Number, Email) VALUES
+    -> ('Jayesh', 'Chaudhari', 'Thane', 'Thane', 'Maharashtra', 400604, 7045279233, 'jayesh2598@gmail.com'),
+    -> ('Ajeesh', 'Ajayan', 'Mumbai', 'Mumbai', 'Maharashtra', 400610, 7045279234, 'ajeesh@gmail.com'),
+    -> ('Devesh', 'Srivastav', 'Lucknow', 'Lucknow', 'Uttar Pradesh', 400614, 7045279235, 'devesh@gmail.com');
+```
+
