@@ -39,3 +39,9 @@ INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_N
 `SELECT * FROM address_book WHERE City = 'Thane';`
 ### Contacts from a particular state
 `SELECT * FROM address_book WHERE State = 'Maharashtra';`
+
+## UC7- Understand the size of address book (count) by City or State
+### Count of contacts from a particular City
+`SELECT City, COUNT(City) FROM address_book GROUP BY City;`
+### Count of contacts from a particular State
+`SELECT State, COUNT(State) FROM address_book GROUP BY State;`
