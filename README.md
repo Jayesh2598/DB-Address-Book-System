@@ -33,3 +33,9 @@ INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_N
 
 ## UC5- Delete existing contact using name
 `DELETE FROM address_book WHERE FirstName = 'Devesh';`
+
+## UC6- Retrieve contacts belonging to a city or state
+### Contacts from a particular city
+`SELECT * FROM address_book WHERE City = 'Thane';`
+### Contacts from a particular state
+`SELECT * FROM address_book WHERE State = 'Maharashtra';`
