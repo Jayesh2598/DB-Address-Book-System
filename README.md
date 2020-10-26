@@ -45,3 +45,6 @@ INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_N
 `SELECT City, COUNT(City) FROM address_book GROUP BY City;`
 ### Count of contacts from a particular State
 `SELECT State, COUNT(State) FROM address_book GROUP BY State;`
+
+## UC8- Retrieve alphabetically sorted entries by name for a particular city
+`SELECT * FROM address_book WHERE city='Thane' ORDER BY FirstName;`
