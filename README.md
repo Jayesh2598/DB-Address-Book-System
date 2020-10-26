@@ -28,3 +28,5 @@ INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_N
     -> ('Devesh', 'Srivastav', 'Lucknow', 'Lucknow', 'Uttar Pradesh', 400614, 7045279235, 'devesh@gmail.com');
 ```
 
+## UC4- Edit existing contact using name
+`UPDATE address_book SET Address = 'Kalyan' WHERE FirstName = 'Ajeesh';`
