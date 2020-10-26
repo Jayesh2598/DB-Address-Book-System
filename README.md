@@ -30,3 +30,6 @@ INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_N
 
 ## UC4- Edit existing contact using name
 `UPDATE address_book SET Address = 'Kalyan' WHERE FirstName = 'Ajeesh';`
+
+## UC5- Delete existing contact using name
+`DELETE FROM address_book WHERE FirstName = 'Devesh';`
