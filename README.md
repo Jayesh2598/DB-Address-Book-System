@@ -75,3 +75,10 @@ update address_book set Book_Name = 'Work' where Type = 'Profession';
 
 ## UC10- Get number of contacts of type
 `select Type, count(Type) from address_book group by Type;`
+
+## UC11- Add contacts to friends and family
+```
+INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_Number, Email, Type, Book_Name) VALUES
+    -> ('Ajay', 'Yadav', 'Nagpur', 'Nagpur', 'Maharashtra', 400624, 7045279237, 'ajay@gmail.com', 'Friends', 'Personal'),
+    -> ('Aditya', 'Raj', 'Jaipur', 'Jaipur', 'Rajasthan', 400630, 7045279238, 'aditya@gmail.com', 'Family', 'Personal');
+```
