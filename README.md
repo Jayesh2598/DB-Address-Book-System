@@ -48,3 +48,21 @@ INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_N
 
 ## UC8- Retrieve alphabetically sorted entries by name for a particular city
 `SELECT * FROM address_book WHERE city='Thane' ORDER BY FirstName;`
+
+## UC9- Identify each address book with name and type
+### Adding more contacts
+```
+INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_Number, Email) VALUES
+    -> ('Devesh', 'Srivastav', 'Lucknow', 'Lucknow', 'Uttar Pradesh', 400614, 7045279235, 'devesh@gmail.com'),
+    -> ('Saurav', 'Sinha', 'Patna', 'Patna', 'Bihar', 400620, 7045279236, 'saurav@gmail.com');
+```
+### Altering table to add columns Type and Book_Name
+`alter table address_book add Book_Name varchar(100) after email;`
+`alter table address_book add Type varchar(100) after email;`
+### Setting Type
+`update address_book set Type = 'Family' where FirstName = 'Jayesh' or FirstName = 'Ajeesh';`
+`update address_book set Type = 'Friends' where FirstName = 'Devesh';`
+`update address_book set Type = 'Profession' where FirstName = 'Saurav';`
+### Setting Book_Name
+`update address_book set Book_Name = 'Personal' where Type = 'Family' or Type = 'Friends';`
+`update address_book set Book_Name = 'Work' where Type = 'Profession';`
