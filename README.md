@@ -57,12 +57,21 @@ INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_N
     -> ('Saurav', 'Sinha', 'Patna', 'Patna', 'Bihar', 400620, 7045279236, 'saurav@gmail.com');
 ```
 ### Altering table to add columns Type and Book_Name
-`alter table address_book add Book_Name varchar(100) after email;`
-`alter table address_book add Type varchar(100) after email;`
+```
+alter table address_book add Book_Name varchar(100) after email;
+alter table address_book add Type varchar(100) after email;
+```
 ### Setting Type
-`update address_book set Type = 'Family' where FirstName = 'Jayesh' or FirstName = 'Ajeesh';`
-`update address_book set Type = 'Friends' where FirstName = 'Devesh';`
-`update address_book set Type = 'Profession' where FirstName = 'Saurav';`
+```
+update address_book set Type = 'Family' where FirstName = 'Jayesh' or FirstName = 'Ajeesh';
+update address_book set Type = 'Friends' where FirstName = 'Devesh';
+update address_book set Type = 'Profession' where FirstName = 'Saurav';
+```
 ### Setting Book_Name
-`update address_book set Book_Name = 'Personal' where Type = 'Family' or Type = 'Friends';`
-`update address_book set Book_Name = 'Work' where Type = 'Profession';`
+```
+update address_book set Book_Name = 'Personal' where Type = 'Family' or Type = 'Friends';
+update address_book set Book_Name = 'Work' where Type = 'Profession';
+```
+
+## UC10- Get number of contacts of type
+`select Type, count(Type) from address_book group by Type;`
