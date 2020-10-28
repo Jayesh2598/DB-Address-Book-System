@@ -82,3 +82,82 @@ INSERT INTO address_book(FirstName, LastName, Address, City, State, ZIP, Phone_N
     -> ('Ajay', 'Yadav', 'Nagpur', 'Nagpur', 'Maharashtra', 400624, 7045279237, 'ajay@gmail.com', 'Friends', 'Personal'),
     -> ('Aditya', 'Raj', 'Jaipur', 'Jaipur', 'Rajasthan', 400630, 7045279238, 'aditya@gmail.com', 'Family', 'Personal');
 ```
+
+## UC13- Ensure all retrieve querries are working properly with new structure
+### Creating table book
+```
+create table book
+    -> (
+    -> name VARCHAR(150) NOT NULL PRIMARY KEY,
+    -> type VARCHAR(150) NOT NULL
+    -> );
+```
+
+### Creating table contact
+```
+create table contact
+    -> (
+    -> id INT unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    -> book_name VARCHAR(150) NOT NULL,
+    -> FirstName VARCHAR(100) NOT NULL,
+    -> LastName VARCHAR(100) NOT NULL,
+    -> Phone_Number VARCHAR(15) NOT NULL,
+    -> Email VARCHAR(150) NOT NULL,
+    -> FOREIGN KEY (book_name) REFERENCES book (name)
+    -> );
+```
+
+### Creating table address
+```
+create table address
+    -> (
+    -> id INT unsigned NOT NULL,
+    -> address VARCHAR(250) NOT NULL,
+    -> city VARCHAR(100) NOT NULL,
+    -> state VARCHAR(100) NOT NULL,
+    -> ZIP mediumint NOT NULL,
+    -> FOREIGN KEY (id) REFERENCES contact (id)
+    -> );
+```
+
+### Inserting values into book
+```
+INSERT INTO book VALUES
+    -> ('Personal','Family'),
+    -> ('Work', 'Profession'),
+    -> ('Associates', 'Friends');
+```
+
+### Inserting values into contact
+```
+INSERT INTO contact (book_name, FirstName, LastName, Phone_Number, Email) VALUES
+    -> ('Personal', 'Jayesh', 'Chaudhari', '7045279233', 'jayesh@gmail.com'),
+    -> ('Associates', 'Ajeesh', 'Ajayan', '7045279234', 'ajeesh@gmail.com'),
+    -> ('Work', 'Devesh', 'Srivastav', '7045279235', 'devesh@gmail.com'),
+    -> ('Associates', 'Saurav', 'Sinha', '7045279236', 'saurav@gmail.com');
+```
+### Inserting values into address
+```
+INSERT INTO address VALUES
+    -> (1,'CSMT', 'Mumbai', 'Maharashtra', 400600),
+    -> (2,'Dadar', 'Mumbai', 'Maharashtra', 400601),
+    -> (3,'Chowk', 'Lucknow', 'Uttar Pradesh', 400602),
+    -> (4,'Janpath', 'Patna', 'Bihar', 400603),
+    -> (3,'Museum', 'Agra', 'Uttar Pradesh', 400605),
+    -> (2,'Zoo', 'Kochi', 'Kerala', 400606);
+```
+
+### Retrieve contacts belonging to a city or state
+```
+select FirstName, City from address a, contact c where a.id = c.id and a.city = 'Mumbai';
+select FirstName, State from address a, contact c where a.id = c.id and a.state = 'Maharashtra';
+```
+### Understand the size of address book of a city or state
+```
+select a.city, count(c.id) from address a, contact c where a.id = c.id and city = 'Mumbai';
+select a.state, count(c.id) from address a, contact c where a.id = c.id and state = 'Maharashtra';
+```
+### Retrieve alphabetically sorted entries by name for a particular city
+`select c.FirstName, c.LastName, a.city from address a, contact c where a.id = c.id and city = 'Mumbai' ORDER BY c.FirstName;`
+### Get number of contacts of type
+`select b.type, count(c.id) from book b, contact c where b.name = c.book_name group by b.type;`
